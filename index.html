@@ -37,8 +37,8 @@
     </section>
     <section class="row controls" v-else>
         <div class="small-12 columns">
-            <button id="attack" @click="attack">ATTACK</button>
-            <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+            <button id="attack" @click="attack" ref="attacked">ATTACK</button> <!-- ref variable -->
+            <button id="special-attack" @click="specialAttack" ref="specialAttacked">SPECIAL ATTACK</button>
             <button id="heal" @click="heal">HEAL</button>
             <button id="give-up" @click="giveUp">GIVE UP</button>
         </div>
@@ -53,6 +53,22 @@
         </div>
     </section>
 </div>
+<div id="app2">
+    <section class="row log">
+        <button @click="display()">Click</button>
+        <hello></hello>
+    </section>
+    
+</div>
+<div id="app3">
+    
+</div>
+
+<div id="app4">
+
+</div>
+
 <script src="app.js"></script>
+<script src="lifecycle.js"></script>
 </body>
 </html>

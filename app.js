@@ -1,4 +1,8 @@
-new Vue({
+Vue.component('Hello', {
+    template: "<h1 style=text-align:center>Hello Component</h1>"
+});
+
+var vm = new Vue({
     el:"#app",
     data:{
         playerHealth:100,
@@ -14,6 +18,7 @@ new Vue({
             this.turns = []
         },
         attack:function () {
+            vm.$refs.attacked.innerText = "Attacked"
             this.monsterAttack()
             
             if (this.checkWin()) {
@@ -27,7 +32,8 @@ new Vue({
             })
             this.checkWin()
         },
-        specialAttack:function() {
+        specialAttack: function () {
+            vm.$refs.specialAttacked.innerText = "specialAttacked"
             this.monsterHealth -= this.calculateDamage(10, 20)
             if (this.checkWin()) {
                 return
@@ -82,3 +88,21 @@ new Vue({
         }
     },
 });
+
+var vm2 = new Vue({
+    el:"#app2",
+    methods: {
+        display:function() {
+            console.log(vm.$data.playerHealth) //global instance 
+            vm.$refs.attacked.innerText = "Attacked" //referenced variable
+        }
+    },
+});
+
+var vm3 = new Vue({ 
+    template:'<h1 style=text-align:center>Hello!</h1>'
+});
+
+vm3.$mount('#app3')
+
+
