@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+Vue.filter('to-lowercase', function(value) {
+  return value.toLowerCase()
+})
+
 Vue.directive('highlight',{
     bind(el, binding, vnode) {
       var delay = 0
