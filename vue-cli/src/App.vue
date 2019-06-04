@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <app-user></app-user>
+                <button @click="selectedComponent = 'appUser'">User</button>
+                <button @click="selectedComponent = 'appServers'">Server</button>
+                <component :is="selectedComponent"></component>
             </div>
         </div>
     </div>
@@ -10,10 +12,17 @@
 
 <script>
     import User from './components/User.vue';
+    import Servers from './components/Servers.vue';
 
     export default {
+        data() {
+            return {
+                selectedComponent:''
+            }
+        },
         components: {
-            appUser: User
+            appUser: User,
+            appServers:Servers
         }
     }
 </script>
