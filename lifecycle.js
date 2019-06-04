@@ -23,4 +23,11 @@ new Vue({
     destroyed() {
         
     },
+    //component lifecycle
+    activated() {
+        
+    },
+    deactivated() {
+        
+    },
 })
