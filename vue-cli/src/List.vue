@@ -3,7 +3,7 @@
         <h1>Filters & Mixins 2</h1>
         <input v-model="filterText">
         <ul>
-            <li v-for="fruit in filteredFruits">{{ fruit }}</li>
+            <li v-for="fruit in filteredFruits" :key="fruit">{{ fruit }}</li>
         </ul>
     </div>
 </template>
