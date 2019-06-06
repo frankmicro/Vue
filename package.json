@@ -4,7 +4,8 @@
   "description": "1. install vue cli\r 2. latest node version\r 3. install vue using command at the end name of project - vue init webpack-simple (vue-cli) \r 4. npm run dev (development v)\r 5. npm run build (production v)",
   "main": "app.js",
   "dependencies": {
-    "http": "^0.0.0"
+    "http": "^0.0.0",
+    "vue-router": "^3.0.6"
   },
   "devDependencies": {},
   "scripts": {

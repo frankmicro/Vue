@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueResource from 'vue-resource'
-
 Vue.use(VueResource)
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+import router from './routes'
 
 Vue.http.options.root = 'https://vue-js-792bf.firebaseio.com/'
 Vue.http.interceptors.push((request, next) => {
@@ -14,6 +16,10 @@ Vue.http.interceptors.push((request, next) => {
       response.json = () => {return {message:response.body}}
     })
 })
+
+/* router.beforeEach((to, from, next) => {
+  console.log("global")
+}) */
 
 Vue.filter('to-lowercase', function(value) {
   return value.toLowerCase()
@@ -45,5 +51,6 @@ export const eventBus = new Vue({
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })
