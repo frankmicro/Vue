@@ -7,3 +7,5 @@
 5. npm run build (production v)
 6. vue-resource -- http requests
 7. vue-router
+8. vuex
+9. npm install --save-dev babel-preset-stage-1

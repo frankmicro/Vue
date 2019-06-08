@@ -5,6 +5,7 @@ Vue.use(VueResource)
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 import router from './routes'
+import {store} from './store/store'
 
 Vue.http.options.root = 'https://vue-js-792bf.firebaseio.com/'
 Vue.http.interceptors.push((request, next) => {
@@ -58,5 +59,6 @@ export const eventBus = new Vue({
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
