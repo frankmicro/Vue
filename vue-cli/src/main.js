@@ -41,6 +41,12 @@ Vue.directive('highlight',{
     }
 })
 
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  document.title = to.name
+  next()
+})
+
 export const eventBus = new Vue({
     methods: {
         changeAge(age) {

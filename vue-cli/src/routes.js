@@ -23,8 +23,8 @@ export const routes = [
         default:User,
         'header-top':Header
     }, children:[
-        {path:'', component:UserStart},
-        {path:':id', component:UserDetail},
+        {path:'', component:UserStart, name:'usersPage'},
+        {path:':id', component:UserDetail, name:'usershow'},
         {path:':id/edit', component:UserEdit, name:'userEdit'},
     ]},
     {
