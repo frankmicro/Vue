@@ -9,3 +9,4 @@
 7. vue-router
 8. vuex
 9. npm install --save-dev babel-preset-stage-1
+10. install axios
