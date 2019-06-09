@@ -1,60 +1,25 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VueResource from 'vue-resource'
-Vue.use(VueResource)
-import VueRouter from 'vue-router'
-Vue.use(VueRouter)
-import router from './routes'
-import {store} from './store/store'
+import axios from 'axios'
 
-Vue.http.options.root = 'https://vue-js-792bf.firebaseio.com/'
-Vue.http.interceptors.push((request, next) => {
-  console.log(request)
-    if (request.method == "POST") {
-      request.method = 'PUT'
-    }
-    next(response => {
-      response.json = () => {return {message:response.body}}
-    })
+import router from './router'
+import store from './store'
+
+axios.defaults.baseURL = 'https://vue-update.firebaseio.com'
+// axios.defaults.headers.common['Authorization'] = 'fasfdsa'
+axios.defaults.headers.get['Accepts'] = 'application/json'
+
+const reqInterceptor = axios.interceptors.request.use(config => {
+  console.log('Request Interceptor', config)
+  return config
+})
+const resInterceptor = axios.interceptors.response.use(res => {
+  console.log('Response Interceptor', res)
+  return res
 })
 
-/* router.beforeEach((to, from, next) => {
-  console.log("global")
-}) */
-
-Vue.filter('to-lowercase', function(value) {
-  return value.toLowerCase()
-})
-
-Vue.directive('highlight',{
-    bind(el, binding, vnode) {
-      var delay = 0
-      if (binding.modifiers['delayed']) {
-        delay = 3000
-      }
-      setTimeout(() => {
-          if (binding.args == 'background') {
-            el.style.backgroundColor = binding.value
-          } else {
-            el.style.backgroundColor = binding.value
-          }
-      }, delay);
-    }
-})
-
-router.beforeEach((to, from, next) => {
-  console.log(to)
-  document.title = to.name
-  next()
-})
-
-export const eventBus = new Vue({
-    methods: {
-        changeAge(age) {
-          this.$emit('changeAge',age)
-        }
-    }
-})
+axios.interceptors.request.eject(reqInterceptor)
+axios.interceptors.response.eject(resInterceptor)
 
 new Vue({
   el: '#app',
