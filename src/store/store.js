@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import counters from './modules/counters';
-import shopping from './modules/shopping'
+import axios from 'axios';
 
 Vue.use(Vuex);
 

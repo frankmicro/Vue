@@ -1,6 +1,6 @@
 <template>
   <Header :toggle="toggleSideBar"/>
-  <Sidebar v-if="showSidebar" :toggle="toggleSideBar" :cart="cart" :inventory="inventory" :remove="removeItem"/>
+  <Sidebar v-if="showSidebar" :toggle="toggleSideBar"/>
   <router-view :inventory="inventory"/>
   
 </template>
@@ -19,8 +19,7 @@ export default {
   },
   data() {
     return {
-      showSidebar : true,
-      cart : {}
+      showSidebar : false
     }
   },
   computed: {
@@ -35,9 +34,6 @@ export default {
     ...mapActions({
       setInventory: types.SET_INVENTORY,
     })
-  },
-  async mounted() {
-    //let a = await fetch('./food.json')
   },
   created() {
     this.setInventory(food)
