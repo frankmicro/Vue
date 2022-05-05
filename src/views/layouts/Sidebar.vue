@@ -51,7 +51,7 @@
 import { mapGetters, mapActions } from 'vuex'
 import * as types from '@/store/types'
 export default {
-  props:['toggle','cart','inventory','remove'],
+  props:['toggle'],
   computed : {
     ...mapGetters({
       shoppingCart : types.GET_SHOPPING_CART,
@@ -67,18 +67,6 @@ export default {
           'id':id
       }
       this.dispatchDeleteCartItem(payload)
-    },
-    getPriceByProductName(name) {
-      let product = this.inventory.find((val) => {
-        return val.name === name;
-      });
-      return product.price['USD'];
-    },
-    calculateSubTotal(key) {
-      const total = Object.entries(this.cart).reduce((acc, curr, index) => {
-        return acc + (curr[1] * this.getPriceByProductName(curr[0]));
-      },0);
-      return total.toFixed(2);
     }
   }
 }

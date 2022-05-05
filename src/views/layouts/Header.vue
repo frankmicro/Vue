@@ -22,26 +22,12 @@
 <script>
 import * as types from '@/store/types'
 import {mapGetters} from 'vuex'
-import { ref } from 'vue'
 export default {
     computed: {
       ...mapGetters({
         cartQuantity : types.GET_CART_SUBQUANTITY
       }),
     },
-    props: {
-      toggle: Function
-    },
-    setup(props) {
-        let sidebarFlag = ref(false)
-        const toggleSidebar = () => {
-            return sidebarFlag = !sidebarFlag.value;
-        }
-
-        return {
-            toggleSidebar,
-            sidebarFlag
-        }
-    },
+    props: ['toggle']
 }
 </script>
