@@ -28,6 +28,13 @@ export default {
         cartQuantity : types.GET_CART_SUBQUANTITY
       }),
     },
-    props: ['toggle']
+    props: ['toggle'],
+    watch:{
+      cartQuantity(newValue) {
+        if (newValue > 6) {
+          alert("only 6 product allowed!")
+        }
+      }
+    }
 }
 </script>

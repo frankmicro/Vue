@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import DashboardView from '../components/DashboardView.vue'
-import Products from '../views/Products.vue'
-import PastOrders from '../views/PastOrders.vue'
+
+function lazyLoad(view){
+  return() => import(`@/views/${view}.vue`)
+}
 
 const routes = [
   {
@@ -12,12 +14,12 @@ const routes = [
   {
     path: '/products',
     name: 'Products',
-    component: Products
+    component: lazyLoad('Products')
   },
   {
     path: '/past-orders',
     name: 'PastOrders',
-    component: PastOrders
+    component: lazyLoad('PastOrders')
   }
 ]
 const router = createRouter({
