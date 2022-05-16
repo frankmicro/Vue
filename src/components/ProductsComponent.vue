@@ -1,5 +1,11 @@
 <template>
-<product-list @add="addToCart" v-if="type == 'displayProducts'" :inventory="inventory"></product-list>
+<div v-if="type == 'displayProducts'">
+    <div v-for="(item, i) in inventory" :key="i" class="card">
+        <!-- <ErrorBoundary :fall-back="fallBack" :key="i"> -->
+            <product-list :key="i" @add="addToCart" :item="item"></product-list>
+        <!-- </ErrorBoundary> -->
+    </div>
+</div>
 <cart-view @remove="removeItem" :shoppingCart="shoppingCart" :cartSubtotal="cartSubtotal" v-if="type == 'displayCart'"></cart-view>
 </template>
 
@@ -7,12 +13,18 @@
 import ProductList from '../views/ProductList.vue'
 import {mapActions, mapGetters} from 'vuex';
 import CartView from '../views/CartView.vue'
+// import ErrorBoundary from "vue-error-boundary";
+// import ErrorView from '../views/layouts/ErrorView.vue'
 import * as types from '@/store/types';
 export default {
+    data : () => ({
+        //fallback : ErrorView
+    }),
     props:['inventory','type'],
     components:{
         ProductList,
-        CartView
+        CartView,
+        //ErrorBoundary
     },
     computed : {
     ...mapGetters({

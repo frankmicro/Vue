@@ -115,3 +115,5 @@ export default {
 //         this.$store.dispatch('setColorCode', newValue)
 //       }
 //     },
+// https://codesandbox.io/s/v3o0923ov5?file=/src/components/ContactList.vue
+// https://www.npmjs.com/package/vue-error-boundary

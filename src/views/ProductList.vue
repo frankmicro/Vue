@@ -1,5 +1,5 @@
+/* eslint-disable vue/no-mutating-props */
 <template>
-            <div v-for="(item, i) in inventory" :key="i" class="card">
             <div class="card-title">
               {{ item.name }}
             </div>
@@ -37,12 +37,11 @@
                 Add to cart
               </button>
             </div>
-          </div>
 </template>
 
 <script>
 export default {
-    props:['inventory'],
+    props:['item'],
     emits:['add'],
     methods:{
         addToCart(id) { 

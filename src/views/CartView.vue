@@ -17,7 +17,7 @@
             <td>{{ val?.name }}</td>
             <td>{{ val?.price['USD'] }}</td>
             <td class="center">{{ val.totalQuantity }}</td>
-            <td>{{ val?.total }}</td>
+            <td>{{ val?.total.toFixed(2) }}</td>
             <td class="center">
               <button @click="removeItem(val?.id, index)" class="btn btn-light cart-remove">
                 &times;
